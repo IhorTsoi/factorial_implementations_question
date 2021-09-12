@@ -32,4 +32,20 @@ defmodule FactorialImplementationsQuestion do
     end)
     |> Enum.reduce(1, &*/2)
   end
+
+  def factorial_with_reduce_on_ranges(n, chunk_size \\ 4)
+      when is_integer(n) and n >= 0 do
+    1..n//chunk_size
+    |> Stream.map(fn first_elem_of_range ->
+      last_elem_of_range =
+        min(
+          first_elem_of_range + chunk_size - 1,
+          n
+        )
+
+      range = first_elem_of_range..last_elem_of_range//1
+      Enum.reduce(range, 1, &*/2)
+    end)
+    |> Enum.reduce(1, &*/2)
+  end
 end
