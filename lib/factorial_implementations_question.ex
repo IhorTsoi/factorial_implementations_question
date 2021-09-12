@@ -33,6 +33,15 @@ defmodule FactorialImplementationsQuestion do
     |> Enum.reduce(1, &*/2)
   end
 
+  @doc """
+    Examples:
+
+    iex> FactorialImplementationsQuestion.factorial_with_reduce_on_ranges 0
+    1
+
+    iex> FactorialImplementationsQuestion.factorial_with_reduce_on_ranges 5
+    120
+  """
   def factorial_with_reduce_on_ranges(n, chunk_size \\ 4)
       when is_integer(n) and n >= 0 do
     1..n//chunk_size
